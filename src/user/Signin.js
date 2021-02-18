@@ -1,8 +1,11 @@
 import { Link, Redirect } from 'react-router-dom'
 import React, { useState } from 'react'
+import {
+  authenticate,
+  signin
+} from '../auth'
 
 import Layout from '../core/Layout'
-import { signin } from '../auth'
 
 const Signin = () => {
   const [values, setValues] = useState({
@@ -27,7 +30,9 @@ const Signin = () => {
         if (data.error) {
           setValues({ ...values, error: data.error, loading: false })
         } else {
-          setValues({ ...values, redirectToReferrer: true })
+          authenticate(data, ()=>{
+            setValues({ ...values, redirectToReferrer: true })
+          })
         }
       }
     )
@@ -37,13 +42,13 @@ const Signin = () => {
   const ShowError = () => (
     <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>{error}</div>
   )
-  const ShowLoading = () => ( 
+  const ShowLoading = () => (
     loading && <div className="alert alert-info"><h2>Loading...</h2> <Link to="/signin">Signin</Link></div>
   )
 
   const redirectUser = () => {
-    if(redirectToReferrer){
-      return <Redirect to="/"/>
+    if (redirectToReferrer) {
+      return <Redirect to="/" />
     }
   }
 
@@ -64,12 +69,11 @@ const Signin = () => {
   )
 
   return (
-    <Layout title="Signup" description="Sigup to  E-Commerce App" className="container col-md-8 offset-md-2">
+    <Layout title="Signin" description="Sigin to  E-Commerce App" className="container col-md-8 offset-md-2">
       {ShowLoading()}
       {ShowError()}
       {signUpForm()}
       {redirectUser()}
-      {JSON.stringify(values)}
     </Layout>
   )
 }
