@@ -1,7 +1,6 @@
 import { Link, withRouter } from 'react-router-dom'
-
-import React from 'react'
-import { signout } from '../auth'
+import React, {Fragment} from 'react'
+import { isAuthenticated, signout } from '../auth'
 
 const isActive = (history, path) => {
   if (history.location.pathname === path) {
@@ -16,17 +15,23 @@ const Menu = ({ history }) =>
     <li className="nav-item">
       <Link className="nav-link" to="/" style={isActive(history, '/')}>Home</Link>
     </li>
-    <li className="nav-item">
-      <Link className="nav-link" to="/signin" style={isActive(history, '/signin')}>Signin</Link>
-    </li>
-    <li className="nav-item">
-      <Link className="nav-link" to="/signup" style={isActive(history, '/signup')}>Signup</Link>
-    </li>
-    <li className="nav-item">
-      <span className="nav-link" onClick={()=>signout(()=>{
-        history.push("/");
-      })} style={{cursor:'pointer', color: '#ffffff'}}>Signout</span>
-    </li>
+    {!isAuthenticated() && (
+      <Fragment>
+        <li className="nav-item">
+          <Link className="nav-link" to="/signin" style={isActive(history, '/signin')}>Signin</Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/signup" style={isActive(history, '/signup')}>Signup</Link>
+        </li>
+      </Fragment>
+    )}
+    {isAuthenticated() && (
+      <li className="nav-item">
+        <span className="nav-link" onClick={() => signout(() => {
+          history.push("/");
+        })} style={{ cursor: 'pointer', color: '#ffffff' }}>Signout</span>
+      </li>
+    )}
   </url>
 
 export default withRouter(Menu);
