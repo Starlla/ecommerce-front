@@ -46,7 +46,7 @@ const AddCategory = () => {
   }
   const goBack = () => (
     <div className="mt-5">
-      <Link to="/admin/dashboard" className="text-warning">Back to Dashboard</Link>
+      <Link to="/admin/dashboard" className="text-info">Back to Dashboard</Link>
     </div>
   )
 
@@ -56,12 +56,12 @@ const AddCategory = () => {
         <label className="text-muted mb-2">Name</label>
         <input type="text" className="form-control" onChange={handleChange} value={name} autoFocus required></input>
       </div>
-      <button className="btn btn-outline-primary mt-3"> Create Category</button>
+      <button className="btn btn-primary mt-3"> Create Category</button>
     </form>
   )
 
   return (
-    <Layout className="p-5" title="Add a new category" description={`G'day ${user.name}, ready to add a new category?`}>
+    <Layout className="p-5" title="Add a new category" description={`Hello ${user.name}, ready to add a new category?`}>
       <div className="row">
         <div className="col-md-8 offset-md-2">
           {showSuccess()}

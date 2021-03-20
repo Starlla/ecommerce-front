@@ -46,7 +46,7 @@ const Dashboard = () => {
     )
   }
   return (
-    <Layout className="p-5" title="Dashboard" description={`G'day ${name}!`}>
+    <Layout className="p-5" title="Dashboard" description={`Hello ${name}!`}>
       <div className="row">
         <div className="col-3">
           {userLinks()}

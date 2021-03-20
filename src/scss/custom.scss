@@ -1,0 +1,30 @@
+// change the theme
+$theme-colors: (
+  "primary": #f8e018,
+  "secondary": #080808,
+  "danger": #ff4136,
+  "info": #1cbbe8,
+);
+
+// Import Bootstrap and its default variables
+@import "~bootstrap/scss/bootstrap.scss";
+
+$info: #1cbbe8;
+
+body {
+  font-family: "Anton", sans-serif;
+}
+
+.alert-info {
+  color: white;
+  background-color: $info;
+  border-color: $info;
+}
+
+.border-3 {
+  border-width: 3px !important;
+}
+
+.border-5 {
+  border-width: 5px !important;
+}
