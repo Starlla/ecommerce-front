@@ -9,6 +9,8 @@ $theme-colors: (
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
 
+$primary:#f8e018;
+$secondary:#080808;
 $info: #1cbbe8;
 
 body {
@@ -27,4 +29,59 @@ body {
 
 .border-5 {
   border-width: 5px !important;
+}
+
+.copyright-title{
+  border-top: 1px #ddd solid;
+}
+
+.product-image {
+  min-height: 100px;
+}
+
+.main-header {
+  z-index: 0;
+  width: 30wh;
+  height: 30vh;
+  background: linear-gradient(-45deg, #f7f7f7, #f7f7f7, $info, $info);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+@-moz-keyframes Gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+@keyframes Gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }
