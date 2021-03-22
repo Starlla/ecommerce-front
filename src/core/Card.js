@@ -12,6 +12,21 @@ const Card = ({ product, showViewProductButton = true }) => {
       </button>
       </Link>
   }
+
+  const showAddToCartButton = () => {
+    return (
+      <button className="btn btn-info my-2 ml-2">
+        Add to cart
+      </button>
+    )
+  }
+
+  const showStock = (quantity) => {
+    return quantity > 0 ? (
+      <span className="badge badge-info badge-pill">In Stock</span>
+    ) : (<span className="badge badge-warning badge-pill">Out of Stock</span>)
+  }
+
   return (
     <div className="card border-3 border-secondary">
       <div className="card-header bg-primary"><strong>{product.name}</strong></div>
@@ -21,14 +36,13 @@ const Card = ({ product, showViewProductButton = true }) => {
           <p>{product.description.substring(0, 30)}</p>
           <p>$ {product.price}</p>
           <p>Category: {product.category && product.category.name}</p>
-          <div>
-            <small>Added on {moment(product.createdAt).fromNow()}</small>
+          <div className="d-flex">
+            {showStock(product.quantity)}
+            <small className="ml-2">Added on {moment(product.createdAt).fromNow()}</small>
           </div>
         </div>
         {showViewButton(showViewProductButton)}
-        <button className="btn btn-info my-2 ml-2">
-          Add to cart
-          </button>
+        {showAddToCartButton()}
       </div>
     </div>
   )
