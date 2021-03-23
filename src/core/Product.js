@@ -30,7 +30,7 @@ const Product = (props) => {
   useEffect(() => {
     const productId = props.match.params.productId
     loadSingleProduct(productId)
-  }, [])
+  }, [props])
 
   return (
     <Layout title={product && product.name} description={product && product.description && product.description.substring(0, 100)}>

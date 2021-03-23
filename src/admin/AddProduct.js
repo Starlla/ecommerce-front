@@ -19,6 +19,7 @@ const AddProduct = () => {
     createdProduct: '',
     redirectToProfile: false,
     formData: '',
+    success:false,
   })
 
   const { name,
@@ -32,6 +33,7 @@ const AddProduct = () => {
     error,
     createdProduct,
     redirectToProfile,
+    success,
     formData
   } = values;
 
@@ -68,9 +70,9 @@ const AddProduct = () => {
     createProduct(user._id, token, formData)
       .then(data => {
         if (data.error) {
-          setValues({ ...values, error: data.error })
+          setValues({ ...values, error: data.error,createdProduct:'' })
         } else {
-          setValues({ ...values, name: '', description: '', photo: '', price: '', quantity: '', loading: false, createdProduct: data.name })
+          setValues({ ...values, name: '', description: '', photo: '', price: '', quantity: '', loading: false, createdProduct: data.name ,formData: new FormData()})
         }
       })
   }

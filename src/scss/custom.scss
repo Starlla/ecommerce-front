@@ -39,15 +39,18 @@ body {
   min-height: 100px;
 }
 
-.main-header {
-  z-index: 0;
-  width: 30wh;
-  height: 30vh;
-  background: linear-gradient(-45deg, #f7f7f7, #f7f7f7, $info, $info);
-  background-size: 400% 400%;
-  -webkit-animation: Gradient 15s ease infinite;
-  -moz-animation: Gradient 15s ease infinite;
-  animation: Gradient 15s ease infinite;
+// .main-header {
+//   z-index: 0;
+//   width: 30wh;
+//   height: 30vh;
+//   background: linear-gradient(-45deg, #f7f7f7, #f7f7f7, $info, $info);
+//   background-size: 400% 400%;
+//   -webkit-animation: Gradient 15s ease infinite;
+//   -moz-animation: Gradient 15s ease infinite;
+//   animation: Gradient 15s ease infinite;
+// }
+.main-header{
+  height: 25vh;
 }
 
 @-webkit-keyframes Gradient {
@@ -84,4 +87,10 @@ body {
   100% {
       background-position: 0% 50%;
   }
+}
+
+.cart-badge {
+  padding: 2px;
+  background-color: $secondary;
+  color:white;
 }

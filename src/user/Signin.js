@@ -18,7 +18,7 @@ const Signin = () => {
   })
 
   const { email, password, error, loading, redirectToReferrer } = values
-  const {user} = isAuthenticated()
+  const { user } = isAuthenticated()
 
   const handleChange = name => event => {
     setValues({ ...values, error: false, [name]: event.target.value })
@@ -32,7 +32,7 @@ const Signin = () => {
         if (data.error) {
           setValues({ ...values, error: data.error, loading: false })
         } else {
-          authenticate(data, ()=>{
+          authenticate(data, () => {
             setValues({ ...values, redirectToReferrer: true })
           })
         }
@@ -50,14 +50,14 @@ const Signin = () => {
 
   const redirectUser = () => {
     if (redirectToReferrer) {
-      if(user && user.role === 1){
+      if (user && user.role === 1) {
         return <Redirect to="/admin/dashboard" />
       } else {
         return <Redirect to="/user/dashboard" />
       }
     }
 
-    if(isAuthenticated()){
+    if (isAuthenticated()) {
       return <Redirect to="/" />;
     }
   }
@@ -80,10 +80,12 @@ const Signin = () => {
 
   return (
     <Layout title="Signin" description="Sigin to  E-Commerce App" className="container col-md-8 offset-md-2">
-      {ShowLoading()}
-      {ShowError()}
-      {signUpForm()}
-      {redirectUser()}
+      <div style={{ height: '30vh' }}>
+        {ShowLoading()}
+        {ShowError()}
+        {signUpForm()}
+        {redirectUser()}
+      </div>
     </Layout>
   )
 }
